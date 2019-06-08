@@ -1,14 +1,36 @@
 package kalogirou.euler.utilities;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Primes {
 	public List<Long> primes = new ArrayList<Long>();
 
-	public void load(long maxNumber) {
+	public Primes() {
+	}
+
+	public Primes(int numberOfPrimes) throws FileNotFoundException, IOException {
+		primes = new ArrayList<Long>();
+		String content = IOUtils.readFile("primes.txt");
+		String[] tokens = content.split(",");
+		if (tokens.length < numberOfPrimes) {
+			System.out.println("I did not find enough primes in your file");
+			return;
+		}
+		for (int index = 0; index < numberOfPrimes; index++) {
+			primes.add(Long.valueOf(tokens[index]));
+		}
+	}
+
+	public List<Long> getPrimes() {
+		return primes;
+	}
+
+	public void load(long maxPrime) {
 		primes.add(2L);
-		long limit = (long) Math.sqrt(maxNumber);
+		long limit = (long) Math.sqrt(maxPrime);
 		for (long index = 3L; index < limit; index += 2) {
 			if (isPrime(index)) {
 				primes.add(index);
@@ -31,15 +53,17 @@ public class Primes {
 		return true;
 	}
 
-	public List<Long> getPrimeFactors(Long n) {
+	public List<Long> getPrimeFactors(Long number) {
 		List<Long> factors = new ArrayList<Long>();
 		for (Long prime : primes) {
-			while (n % prime == 0) {
+			if (number < prime) {
+				break;
+			}
+			while (number % prime == 0) {
 				factors.add(prime);
-				n = n / prime;
+				number = number / prime;
 			}
 		}
 		return factors;
 	}
-
 }

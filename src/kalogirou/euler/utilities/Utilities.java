@@ -1,5 +1,7 @@
 package kalogirou.euler.utilities;
 
+import java.util.List;
+
 public class Utilities {
 
 	public static boolean isPalindrome(long lon) {
@@ -18,5 +20,13 @@ public class Utilities {
 				return false;
 		}
 		return true;
+	}
+
+	public static long getProduct(List<Long> factors) {
+		long product = 1L;
+		for (Long factor : factors) {
+			product *= factor;
+		}
+		return product;
 	}
 }
