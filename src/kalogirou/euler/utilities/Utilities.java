@@ -29,4 +29,8 @@ public class Utilities {
 		}
 		return product;
 	}
+
+	public static boolean isSquare(Long number) {
+		return (Math.round(Math.sqrt(number)) == Math.sqrt(number));
+	}
 }

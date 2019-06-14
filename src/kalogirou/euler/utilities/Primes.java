@@ -12,7 +12,6 @@ public class Primes {
 	}
 
 	public Primes(int numberOfPrimes) throws FileNotFoundException, IOException {
-		primes = new ArrayList<Long>();
 		String content = IOUtils.readFile("primes.txt");
 		String[] tokens = content.split(",");
 		if (tokens.length < numberOfPrimes) {
@@ -21,6 +20,15 @@ public class Primes {
 		}
 		for (int index = 0; index < numberOfPrimes; index++) {
 			primes.add(Long.valueOf(tokens[index]));
+		}
+	}
+
+	public void loadAll() throws IOException {
+		primes.clear();
+		String content = IOUtils.readFile("C:\\Users\\Alki\\Dropbox\\projects\\java\\Euler\\EulerUtilities\\primes.txt");
+		String[] tokens = content.split(",");
+		for (String token : tokens) {
+			primes.add(Long.valueOf(token));
 		}
 	}
 
