@@ -1,6 +1,9 @@
 package kalogirou.euler.utilities;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Utilities {
 
@@ -32,5 +35,18 @@ public class Utilities {
 
 	public static boolean isSquare(Long number) {
 		return (Math.round(Math.sqrt(number)) == Math.sqrt(number));
+	}
+
+	public static List<Long> findDivisorsToo(Long number) {
+		Set<Long> set = new HashSet();
+		Long upperLimit = number;
+		for (Long index = 1L; index < upperLimit; index++) {
+			if (number % index == 0) {
+				set.add(index);
+				set.add(number / index);
+				upperLimit = number / index;
+			}
+		}
+		return new ArrayList<>(set);
 	}
 }
