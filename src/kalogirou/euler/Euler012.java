@@ -14,7 +14,7 @@ public class Euler012 {
 			if (triangle % 2 != 0) {
 				continue;
 			}
-			List<Long> divisors = Utilities.findDivisorsToo(triangle);
+			List<Long> divisors = Utilities.findDivisors(triangle);
 			if (divisors.size() > 500) {
 				System.out.println(triangle + " more than 500");
 			}

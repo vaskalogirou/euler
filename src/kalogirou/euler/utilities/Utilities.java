@@ -37,7 +37,7 @@ public class Utilities {
 		return (Math.round(Math.sqrt(number)) == Math.sqrt(number));
 	}
 
-	public static List<Long> findDivisorsToo(Long number) {
+	public static List<Long> findDivisors(Long number) {
 		Set<Long> set = new HashSet();
 		Long upperLimit = number;
 		for (Long index = 1L; index < upperLimit; index++) {
