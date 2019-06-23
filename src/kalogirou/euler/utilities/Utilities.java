@@ -49,4 +49,12 @@ public class Utilities {
 		}
 		return new ArrayList<>(set);
 	}
+
+	public static long calculateSum(List<Long> lista) {
+		long sum = 0;
+		for (Long lon : lista) {
+			sum += lon;
+		}
+		return sum;
+	}
 }
